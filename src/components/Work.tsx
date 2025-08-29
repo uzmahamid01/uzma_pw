@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { ArrowUpRight } from 'lucide-react';
 import {InlineDoodle } from './DoodleElements';
@@ -164,11 +165,17 @@ export const projects: Project[] = [
 function FeaturedProjectCard({ project }: { project: Project }) {
   const [isHovered, setIsHovered] = useState(false);
 
+  const isInternal = project.url.startsWith('/projects');
+
+  const CardWrapper: any = isInternal ? Link : 'a';
+
+  const wrapperProps = isInternal
+    ? { to: project.url }
+    : { href: project.url, target: '_blank', rel: 'noopener noreferrer' };
+
   return (
-    <a
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <CardWrapper
+      {...wrapperProps}
       className="group block relative overflow-hidden bg-gray-900 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -179,33 +186,38 @@ function FeaturedProjectCard({ project }: { project: Project }) {
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-        
-        <div className={`absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all duration-300 ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
+        <div
+          className={`absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all duration-300 ${
+            isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+          }`}
+        >
           <ArrowUpRight size={18} className="text-white" />
         </div>
-
       </div>
-
       <div className="p-6 bg-white">
         <div className="flex items-center justify-between">
           <h3 className="text-xl font-medium text-gray-900">{project.title}</h3>
           <span className="text-sm text-gray-500">{project.category}</span>
         </div>
       </div>
-    </a>
+    </CardWrapper>
   );
 }
 
 function RegularProjectCard({ project }: { project: Project }) {
   const [isHovered, setIsHovered] = useState(false);
 
+  const isInternal = project.url.startsWith('/projects');
+  const CardWrapper: any = isInternal ? Link : 'a';
+
+  const wrapperProps = isInternal
+    ? { to: project.url }
+    : { href: project.url, target: '_blank', rel: 'noopener noreferrer' };
+
   return (
-    <a
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <CardWrapper
+      {...wrapperProps}
       className="group block relative overflow-hidden bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-lg"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -216,22 +228,22 @@ function RegularProjectCard({ project }: { project: Project }) {
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        
-        <div className={`absolute top-4 right-4 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
+        <div
+          className={`absolute top-4 right-4 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 ${
+            isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+          }`}
+        >
           <ArrowUpRight size={14} className="text-gray-700" />
         </div>
       </div>
-
       <div className="p-6">
         <div className="flex items-center justify-between mb-3">
           <h3 className="font-medium text-gray-900">{project.title}</h3>
           <span className="text-sm text-gray-500">{project.category}</span>
         </div>
-        
         <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
           {project.description}
         </p>
-        
         <div className="flex flex-wrap gap-2">
           {project.tags.slice(0, 3).map((tag, index) => (
             <span
@@ -243,60 +255,49 @@ function RegularProjectCard({ project }: { project: Project }) {
           ))}
         </div>
       </div>
-    </a>
+    </CardWrapper>
   );
 }
 
 export function Work() {
-  const featuredProjects = projects.filter(p => p.featured);
-  const regularProjects = projects.filter(p => !p.featured);
+  const featuredProjects = projects.filter((p) => p.featured);
+  const regularProjects = projects.filter((p) => !p.featured);
 
   return (
     <section id="work" className="py-24 bg-gray-50/50 relative doodle-container">
-      
-      
       <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
         <div className="mb-16">
-          <h2 className="text-lg md:text-xl font-medium text-foreground mb-8">
-            [WORK]
-          </h2>
+          <h2 className="text-lg md:text-xl font-medium text-foreground mb-8">[WORK]</h2>
           <div className="max-w-2xl">
             <p className="text-2xl md:text-2xl lg:text-4xl font-medium text-foreground leading-relaxed">
-              creating innovative <span className="doodle-highlight">solutions</span> at the intersection of <span className="doodle-highlight">human creativity</span> and
-              <br/><span className="doodle-highlight"><strong>technology</strong></span>.
+              creating innovative <span className="doodle-highlight">solutions</span> at the intersection of{' '}
+              <span className="doodle-highlight">human creativity</span> and
+              <br />
+              <span className="doodle-highlight">
+                <strong>technology</strong>
+              </span>
+              .
             </p>
           </div>
         </div>
 
-        {/* <div className="max-w-xl">
-            <p className="text-2xl md:text-2xl lg:text-4xl font-medium text-foreground leading-relaxed mb-2">  
-              <span className="doodle-highlight"> featured projects</span>
-            </p>
-        </div> */}
+        {/* Featured Projects */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {featuredProjects
-            .filter(project => project.featured)
-            .map((project) => (
-              <div key={project.id}>
-                <FeaturedProjectCard project={project} />
+          {featuredProjects.map((project) => (
+            <div key={project.id}>
+              <FeaturedProjectCard project={project} />
             </div>
           ))}
         </div>
 
-         {/* <div className="max-w-xl">
-            <p className="text-2xl md:text-2xl lg:text-4xl font-medium text-foreground leading-relaxed mb-2">  
-              <span className="doodle-highlight"> all projects</span>
-            </p>
+        {/* Regular Projects */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {regularProjects.map((project) => (
+            <div key={project.id}>
+              <RegularProjectCard project={project} />
+            </div>
+          ))}
         </div>
-         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {projects.map((project) =>
-            !project.featured ? (
-              <div key={project.id}>
-                <RegularProjectCard project={project} />
-              </div>
-            ) : null
-          )}
-        </div> */}
       </div>
     </section>
   );
