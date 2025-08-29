@@ -29,7 +29,7 @@ export function About() {
             <div className="space-y-8">
               <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium text-foreground leading-relaxed max-w-2xl">
                 Hi, I'm <span className="doodle-highlight">Uzma</span>. I code random stuff. 
-                <br/> I am on a mission to rebuild <span className="doodle-highlight">AI industry</span>. This time for <span className="doodle-highlight">human good</span>.
+                <br/> I am on a mission to rebuild <span className="doodle-highlight">Tech industry</span>. This time for <span className="doodle-highlight">human good</span>.
               </h3>
             </div>
 
@@ -37,16 +37,17 @@ export function About() {
               <div>
                 <h4 className="text-sm font-medium text-foreground mb-4 tracking-wider">MY LIFE</h4>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  I'm Kashmiri. I live in Texas. I'm a coffee addict. I love innovation. I hate limitations. I'm 
+                  I'm Kashmiri. I live in Texas, USA. I'm a coffee addict. I love innovation. I hate limitations. I'm 
                   optimistic relentlessly. I have infinite ambitions. I don't rest(barely). I'm on a mission to make it work wonders for people everywhere.(how? still figuring it out…but that’s half the fun☕)
               </p>
+
               </div>
 
               <div>
                 <h4 className="text-sm font-medium text-foreground mb-4 tracking-wider">BUSINESS</h4>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   Tomb Raider—yep, that's what first sparked my love for coding. From there, I discovered the endless world of technology. 
-                  Now, my mission is clear: craft unforgettable software that wows people and makes the world a smarter, better place (even if I LOL my way through the process).
+                  Now, my mission is clear: tech for human good all around the world (even if i LOL my way through the process). What I stand for is DATA and PRIVACY: protecting people’s digital lives while building tools that empower them. However, I’m also endlessly curious: fashion, space, and new tech all inspire me, because the future isn’t just one dimensional, it’s a mix of everything, woven together.
                 </p>
               </div>
             </div>
