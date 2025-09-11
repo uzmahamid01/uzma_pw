@@ -17,8 +17,8 @@ export function Hero() {
 
       if (currentIndex === fullText.length) {
         clearInterval(interval);
-      }
-    }, 100); // typing speed in ms
+      } 
+    }, 100); 
 
     return () => clearInterval(interval);
   }, []);
@@ -28,7 +28,7 @@ export function Hero() {
       
       <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[70vh]">
-          {/* Main Content */}
+         
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-6">
               <a 
@@ -63,7 +63,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Large Name Typography */}
+       
         <div className="mt-2 relative">
           <h1 className="text-[8rem] md:text-[12rem] lg:text-[16rem] xl:text-[12rem] font-bold tracking-tighter text-foreground leading-none">
             <Link to="/" className="hover:text-blue-500 transition-colors">
@@ -71,7 +71,7 @@ export function Hero() {
             </Link>
           </h1>
           
-          {/* Profile Image positioned over the text */}
+          
           <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32">
             <ImageWithFallback
               src="https://media.licdn.com/dms/image/v2/D5603AQHwRdMUG4oVsA/profile-displayphoto-shrink_200_200/B56ZROy_2HHQAY-/0/1736488779695?e=1758758400&v=beta&t=5ULDuTZ57hAhjPF11c_fS2uE2-BV6BwsbVS9jwBftMY"

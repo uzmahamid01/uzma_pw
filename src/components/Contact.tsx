@@ -1,6 +1,6 @@
 import { Mail, MessageCircle, Instagram, Globe, Linkedin, Twitter, Send, Coffee } from 'lucide-react';
 import React, { useState } from 'react';
-import Link from 'next/link';
+import Resume from '../assets/MasterResumeUHM.pdf';
 
 
 export function Contact() {
@@ -73,8 +73,8 @@ export function Contact() {
                   </div>
                 <div>
                   <a
-                    href="/assets/MasterResumeUHM.pdf"
-                     download="MasterResumeUHM.pdf"
+                    href={Resume}
+                    download="MasterResumeUHM.pdf"
                     className="underline hover:underline underline-offset-4 decoration-2 inline-flex items-center gap-1 text-gray-800 hover:text-gray-900 hover:scale-105 transition-transform duration-200"
                   >
                     my resume
